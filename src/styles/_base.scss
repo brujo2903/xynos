@@ -1,0 +1,23 @@
+@use 'variables';
+
+* {
+  box-sizing: border-box;
+}
+
+.game-form {
+  background-color: variables.$fog-color;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.view {
+  background-color: variables.$fog-color;
+  width: variables.$grid-size * variables.$visible-count-x;
+  height: variables.$grid-size * variables.$visible-count-y;
+  margin: auto;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}

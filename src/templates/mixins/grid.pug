@@ -1,0 +1,34 @@
+mixin renderGrid(map, FINISH_ID)
+  each row, y in map
+    each cell, x in row
+      - const position = `${x}_${y}`
+      - const block = cell.split('_')
+      - let className = 'grid'
+      - let target = `grid_${position}`
+
+      case block[0]
+        when 'W'
+          - className += ' wall'
+        when 'T'
+          - className += ' tree'
+        when 'F'
+          - className += ' finish'
+          - target = FINISH_ID
+        when 'P'
+          - className += ' portal'
+        when 'B'
+          - className += ' barrel'
+      
+      label(class=className, for=target)
+        case block[0]
+          when 'K'
+            label.object.key(for=`key_${position}`)
+          when 'L'
+            - const lockPosition = block[1].split('-').join('_')
+            label.object.lock(for=`lock_${position}`)
+            label.object.lock(data-key=lockPosition)
+          when 'M'
+            label.object.monster(for=`monster_${position}`)
+          when 'P'
+            - const portalId = block[1]
+            label.object.portal(for=`portal_${position}` data-target=portalId)

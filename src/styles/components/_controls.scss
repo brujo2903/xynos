@@ -1,0 +1,21 @@
+@use '../variables' as *;
+
+.map-check {
+  @if $debug == false {
+    display: none;
+  }
+}
+
+.reset {
+  color: #000000;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background-color: transparent;
+  background-image: url('https://assets.codepen.io/430361/css-maze-reset.png');
+  background-size: $button-width $button-height;
+  width: $button-width;
+  height: $button-height;
+  border: 0;
+  outline: 0;
+}

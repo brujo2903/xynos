@@ -1,0 +1,43 @@
+mixin mapInputs(map, FINISH_ID)
+  each row, y in map
+    each cell, x in row
+      - const position = `${x}_${y}`
+      - const block = cell.split('_')
+      input.map-check(
+        type="radio"
+        name="map-radio"
+        id=`grid_${position}`
+        checked=cell === 'S'
+      )
+      case block[0]
+        when 'K'
+          input.map-check(type="checkbox" id=`key_${position}`)
+        when 'L'
+          input.map-check(type="checkbox" id=`lock_${position}`)
+        when 'M'
+          input.map-check(type="checkbox" id=`monster_${position}`).monster-check
+
+mixin dialogInputs(preDialog, postDialog, FINISH_ID)
+  //- Pre-game dialog box inputs
+  - for (let i = 0; i <= preDialog.length; i++)
+    input.map-check.dialog-check(
+      type="radio"
+      name="pre_dialog"
+      id=`pre_dialog_${i}`
+      checked=i === 0
+    )
+  
+  //- Post-game dialog box inputs
+  each _, i in postDialog
+    input.map-check.dialog-check(
+      type="radio"
+      name="post_dialog"
+      id=`post_dialog_${i}`
+      checked=i === 0
+    )
+  
+  //- End game dialog box input
+  input.map-check.dialog-check(
+    type="checkbox"
+    id=FINISH_ID
+  )

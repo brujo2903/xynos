@@ -1,0 +1,106 @@
+@use '../variables' as *;
+
+// Dialog states
+@for $i from 0 to $pre-dialog-count {
+  #pre_dialog_#{$i}:checked ~ .view [id='pre_dialog_trigger_#{$i}'] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+}
+
+@for $i from 0 to $post-dialog-count {
+  #post_dialog_#{$i}:checked ~ #show_post_dialog:checked ~ .view {
+    [id='post_dialog_trigger_#{$i}'] {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+  }
+}
+
+// Monster states
+.monster-check:checked ~ .view {
+  .map .grid {
+    pointer-events: none !important;
+  }
+  
+  .lose-dialog {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+  
+  .character {
+    background-image: url('https://assets.codepen.io/430361/css-maze-character-faint.png');
+    background-size: ($grid-size * 3) $grid-size;
+    background-position: ($grid-size * -2) 0;
+    animation: character-faint 512ms step-end !important;
+  }
+}
+
+// Grid movement states
+@for $x from 0 to $repeat-x {
+  @for $y from 0 to $repeat-y {
+    $position: #{$x}_#{$y};
+    
+    #grid_#{$position}:checked ~ .view .map {
+      transform:
+        translateX($x * $grid-size * -1)
+        translateY($y * $grid-size * -1);
+      
+      .grid[for='grid_#{$x + 1}_#{$y}'],
+      .grid[for='grid_#{$x - 1}_#{$y}'],
+      .grid[for='grid_#{$x}_#{$y + 1}'],
+      .grid[for='grid_#{$x}_#{$y - 1}'] {
+        pointer-events: auto;
+      }
+      
+      .grid {
+        &.wall,
+        &.tree,
+        &.barrel {
+          pointer-events: none;
+        }
+      }
+    }
+    
+    #key_#{$position}:checked ~ .view .map .grid {
+      [for='key_#{$position}'] {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      [data-key='#{$position}'] {
+        display: none;
+      }
+    }
+    
+    #lock_#{$position}:checked ~ .view .map .grid [for='lock_#{$position}'] {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    #grid_#{$position}:checked ~ .view .character {
+      animation: animate-character_#{$position} 1024ms step-end;
+    }
+    
+    @keyframes animate-character_#{$position} {
+      0% {
+        background-position: ($grid-size * -1) 0;
+      }
+      
+      25% {
+        background-position: ($grid-size * -2) 0;
+      }
+      
+      50% {
+        background-position: ($grid-size * -1) 0;
+      }
+      
+      75% {
+        background-position: ($grid-size * -2) 0;
+      }
+    }
+  }
+}

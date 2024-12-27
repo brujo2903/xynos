@@ -1,0 +1,14 @@
+include ./mixins/inputs
+include ./mixins/grid
+include ./mixins/dialogs
+
+//- Map inputs
++mapInputs(map, FINISH_ID)
++dialogInputs(preDialog, postDialog, FINISH_ID)
+
+.view
+  .map
+    +renderGrid(map, FINISH_ID)
+  .character
+  .fog
+  +renderDialogs(preDialog, postDialog, loseDialog)

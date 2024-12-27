@@ -1,0 +1,14 @@
+@use '../variables' as *;
+
+.character {
+  background-image: url('https://assets.codepen.io/430361/css-maze-character.png');
+  background-size: ($grid-size * 3) $grid-size;
+  background-position: 0 0;
+  width: $grid-size;
+  height: $grid-size;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  image-rendering: pixelated;
+  transform: translateX(-50%) translateY(-50%);
+}

@@ -1,0 +1,14 @@
+@use '../variables' as *;
+@use 'sass:math';
+
+.map {
+  --repeat-x: 0;
+  --repeat-y: 0;
+  display: grid;
+  grid-template-columns: repeat($repeat-x, $grid-size);
+  grid-template-rows: repeat($repeat-y, $grid-size);
+  position: absolute;
+  top: calc(#{$grid-size} * #{math.floor(math.div($visible-count-x, 2))});
+  left: calc(#{$grid-size} * #{math.floor(math.div($visible-count-y, 2))});
+  transition: transform 1024ms ease-out;
+}

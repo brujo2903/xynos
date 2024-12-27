@@ -1,0 +1,21 @@
+mixin renderDialogs(preDialog, postDialog, loseDialog)
+  //- Pre-game dialog box
+  each dialog, i in preDialog.reverse()
+    label(
+      id=`pre_dialog_trigger_${i}`
+      for=`pre_dialog_${i + 1}`
+    ).pre-dialog= dialog
+  
+  //- Post-game dialog box
+  each dialog, i in postDialog.reverse()
+    label(
+      id=`post_dialog_trigger_${i}`
+      for=`post_dialog_${i + 1}`
+    ).post-dialog= dialog
+      if i === postDialog.length - 1
+        button(type="reset").reset Play again
+  
+  //- Game lost dialog box
+  .lose-dialog
+    span= loseDialog
+    button(type="reset").reset Play again

@@ -1,0 +1,35 @@
+@use '../variables' as *;
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  
+  50% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes character-faint {
+  0% {
+    background-image: url('https://assets.codepen.io/430361/css-maze-character.png');
+    background-position: 0 0;
+  }
+  
+  33.33333% {
+    background-image: url('https://assets.codepen.io/430361/css-maze-character-faint.png');
+    background-position: 0 0;
+  }
+  
+  66.66667% {
+    background-position: ($grid-size * -1) 0;
+  }
+  
+  100% {
+    background-position: ($grid-size * -2) 0;
+  }
+}

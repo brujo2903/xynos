@@ -1,0 +1,27 @@
+@use '../variables' as *;
+
+.grid {
+  background-image: url('https://assets.codepen.io/430361/css-maze-floor.png');
+  background-size: $grid-size $grid-size;
+  display: block;
+  position: relative;
+  pointer-events: none;
+  image-rendering: pixelated;
+  
+  &.wall {
+    background-image: url('https://assets.codepen.io/430361/css-maze-wall.png');
+  }
+  
+  &.tree {
+    background-image: url('https://assets.codepen.io/430361/css-maze-tree.png');
+  }
+  
+  &.finish {
+    background-image: url('https://assets.codepen.io/430361/css-maze-exit.png');
+    pointer-events: auto;
+  }
+  
+  &.barrel {
+    background-image: url('https://assets.codepen.io/430361/css-maze-barrel.png');
+  }
+}

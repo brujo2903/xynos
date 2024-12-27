@@ -1,0 +1,27 @@
+@use "sass:math";
+
+// Grid configuration
+$repeat-x: 10;
+$repeat-y: 10;
+$visible-count-x: 3;
+$visible-count-y: 3;
+$grid-size: 25vmin;
+
+// Dialog configuration
+$pre-dialog-count: 3;
+$post-dialog-count: 2;
+
+// Colors
+$fog-color: #000000;
+
+// Typography
+$dialog-font-family: 'Press Start 2P', cursive;
+$dialog-font-size: 16px;
+$dialog-padding: 8px;
+
+// Button dimensions
+$button-width: 20rem;
+$button-height: calc(#{$button-width} * 0.173611); // 1/5.76 converted to decimal
+
+// Debug mode
+$debug: false;

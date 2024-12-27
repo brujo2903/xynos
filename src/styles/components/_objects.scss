@@ -1,0 +1,37 @@
+@use '../variables' as *;
+
+.object {
+  background-size: $grid-size $grid-size;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 128ms ease-out;
+  
+  &.key {
+    background-image: url('https://assets.codepen.io/430361/css-maze-key.png');
+    pointer-events: auto;
+  }
+  
+  &.lock {
+    background-image: url('https://assets.codepen.io/430361/css-maze-door.png');
+  }
+  
+  &.monster {
+    background-image: url('https://assets.codepen.io/430361/css-maze-monster.png');
+  }
+  
+  &.portal {
+    background-image: url('https://assets.codepen.io/430361/css-maze-exit.png');
+    animation: portal-pulse 2s infinite;
+    pointer-events: auto;
+  }
+}
+
+@keyframes portal-pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
